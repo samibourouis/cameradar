@@ -1,5 +1,5 @@
 # Build stage
-FROM golang:alpine AS build-env
+FROM golang:1.17.10-alpine3.15 AS build-env
 
 COPY . /go/src/github.com/Ullaakut/cameradar
 WORKDIR /go/src/github.com/Ullaakut/cameradar/cmd/cameradar
@@ -14,7 +14,7 @@ RUN apk update && \
     pkgconfig
 ENV GO111MODULE=on
 RUN go version
-RUN GOFLAGS="-buildvcs=false" go build -o cameradar
+RUN go build -o cameradar
 
 # Final stage
 FROM alpine
