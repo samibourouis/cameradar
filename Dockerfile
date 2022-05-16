@@ -14,7 +14,7 @@ RUN apk update && \
     pkgconfig
 ENV GO111MODULE=on
 RUN go version
-GOFLAGS="-buildvcs=false" RUN go build -o cameradar
+RUN GOFLAGS="-buildvcs=false" go build -o cameradar
 
 # Final stage
 FROM alpine
